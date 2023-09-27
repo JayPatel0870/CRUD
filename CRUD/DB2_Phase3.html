@@ -1,0 +1,29 @@
+<!-- HTML code to display the table and buttons -->
+<table id="csvTable"></table>
+
+<script src="ITEM"></script>
+<script>
+$(document).ready(function() {
+    // Use jQuery to retrieve the CSV data
+    $.get("csv.php", function(data) {
+        // Split the data into rows
+        var rows = data.split("\n");
+        // Loop through the rows and create HTML table rows
+        for (var i = 0; i < rows.length; i++) {
+            var row = rows[i].split(",");
+            var html = "<tr><td>"+row[0]+"</td><td>"+row[1]+"</td><td>"+row[2]+"</td><td><button class='updateButton'>Update</button><button class='deleteButton'>Delete</button></td></tr>";
+            $("#csvTable").append(html);
+        }
+    });
+
+    // Use jQuery to handle button clicks
+    $("#csvTable").on("click", ".updateButton", function() {
+        // Get the row data and update the CSV file using AJAX
+    });
+
+    $("#csvTable").on("click", ".deleteButton", function() {
+        // Get the row data and delete the record from the CSV file using AJAX
+    });
+});
+</script>
+	
